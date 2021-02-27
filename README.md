@@ -1,24 +1,23 @@
 ```java
-class parent{
-    public void identify(){
+class parent1{
+    private void identify(){
         System.out.println("This is parent class.");
     }
 }
 
-class child extends parent{
+class child1 extends parent1{
     public void identify(){
         System.out.println("This is child class.");
     }
     public void parentIdentify(){
-        super.identify();
+            super.identify();
     }
 }
 
-public class question1{
+public class question2{
     public static void main(String[] args){
-        parent P = new parent();
-        child C = new child();
-
+        parent1 P = new parent1();
+        child1 C = new child1();
         System.out.println("\nCalling from Parent: ");
         P.identify();
         System.out.println("\nCalling from Child: ");
