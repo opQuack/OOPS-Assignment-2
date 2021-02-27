@@ -1,80 +1,49 @@
 ```java
 import java.util.Scanner;
 
-class Member{
-    private String name_;
-    private int age_;
-    private String phone_number_;
-    private String address_;
-    private double salary_;
-    Member(){
-        name_ = phone_number_ = address_ = "";
-        age_ = 0;   
+class Rectangle{
+    private double length_;
+    private double breadth_;
+    Rectangle(double l, double b){
+        length_ = l;
+        breadth_ = b;
     }
-    public void set(){
-        Scanner sc = new Scanner(System.in);
-        name_  = sc.next();
-        age_ = sc.nextInt();
-        phone_number_ = sc.next();
-        address_ = sc.next();
-        salary_ = sc.nextDouble();
+    public double Area(){
+        return length_ * breadth_;
     }
-    protected void printSalary(){
-        System.out.println("Salary: " + salary_);
+    public double Perimeter(){
+        return 2 * ( length_ + breadth_ );
     }
-    protected void print(){
-        System.out.println("Name: " + name_);
-        System.out.println("Age: " + age_);
-        System.out.println("Phone Number: " + phone_number_);
-        System.out.println("Address: " + address_);
-        printSalary();
+    public void displayStats(){
+        System.out.println("Area: " + Area());
+        System.out.println("Perimeter: " + Perimeter() + "\n");
     }
 }
 
-class Employee extends Member{
-    private String specialization_;
-    Employee(){
-        specialization_ = "";
+class Square extends Rectangle{
+    public Square(double s){
+        super(s, s);
     }
-    public void set(){
-        Scanner sc = new Scanner(System.in);
-        super.set();
-        specialization_ = sc.next();
-    }
-    public void print(){
-        super.print();
-        System.out.println("Specialization: " + specialization_ + "\n");
-    }
-
-}
-
-class Manager extends Member{
-    private String dept_;
-    Manager(){
-        dept_ = "";
-    }
-    public void set(){
-        Scanner sc = new Scanner(System.in);
-        super.set();
-        dept_ = sc.next();
-    }
-    public void print(){
-        super.print();
-        System.out.println("Department: " + dept_ + "\n");
+    public void displayStats(){
+        super.displayStats();
     }
 }
 
-public class question3 {
+public class question4 {
     public static void main(String[] args){
-        Employee E = new Employee();
-        Manager M = new Manager();
-        System.out.println("\nEmployee: ");
-        E.set();
-        System.out.println("\nManager: ");
-        M.set();
-        System.out.println("\n");
-        E.print();
-        M.print();
+        double i, j;
+        Scanner sc = new Scanner(System.in);
+        i = sc.nextDouble();
+        j = sc.nextDouble();
+        
+        Rectangle R = new Rectangle(i, j);
+        System.out.println("\nRectangle:");
+        R.displayStats();
+
+        i = sc.nextDouble();
+        Square S = new Square(i);
+        System.out.println("\nSquare:");
+        S.displayStats();
     }
 }
 
