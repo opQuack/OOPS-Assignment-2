@@ -1,5 +1,5 @@
-# OOPS-Assignment-2
-''' JAVA
+'''java
+
 class parent{
     public void identify(){
         System.out.println("This is parent class.");
@@ -27,4 +27,5 @@ public class question1{
         C.parentIdentify();
     }
 }
+
 '''
