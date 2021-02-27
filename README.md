@@ -1,5 +1,6 @@
 ```java
 import java.util.Scanner;
+import java.util.Vector;
 
 class Rectangle{
     private double length_;
@@ -29,21 +30,23 @@ class Square extends Rectangle{
     }
 }
 
-public class question4 {
+public class question5 {
     public static void main(String[] args){
-        double i, j;
+        int i, n;
+        double j;
         Scanner sc = new Scanner(System.in);
-        i = sc.nextDouble();
-        j = sc.nextDouble();
         
-        Rectangle R = new Rectangle(i, j);
-        System.out.println("\nRectangle:");
-        R.displayStats();
+        System.out.print("n: ");
+        n = sc.nextInt();
+        Vector<Square> s = new Vector<Square>();
+        for( i = 0; i < n; i++ ){
+            j = sc.nextDouble();
+            s.add(new Square(j));
+            System.out.println("Square " + (i+1) + ": ");
+            s.elementAt(i).displayStats();
+        }
 
-        i = sc.nextDouble();
-        Square S = new Square(i);
-        System.out.println("\nSquare:");
-        S.displayStats();
+        
     }
 }
 
