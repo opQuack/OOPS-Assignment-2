@@ -1,53 +1,42 @@
 ```java
-import java.util.Scanner;
-import java.util.Vector;
-
-class Rectangle{
-    private double length_;
-    private double breadth_;
-    Rectangle(double l, double b){
-        length_ = l;
-        breadth_ = b;
-    }
-    public double Area(){
-        return length_ * breadth_;
-    }
-    public double Perimeter(){
-        return 2 * ( length_ + breadth_ );
-    }
-    public void displayStats(){
-        System.out.println("Area: " + Area());
-        System.out.println("Perimeter: " + Perimeter() + "\n");
+class Shape{
+    public void identify(){
+        System.out.println("This is a shape");
     }
 }
 
-class Square extends Rectangle{
-    public Square(double s){
-        super(s, s);
+class Rectangle extends Shape{
+    public void identify(){
+        System.out.println("This is a rectangle shape");
     }
-    public void displayStats(){
-        super.displayStats();
+    protected void parentIdentify(){
+        super.identify();
     }
 }
 
-public class question5 {
+class Circle{
+    public void identify(){
+        System.out.println("This is a Circle shape");
+    }
+}
+
+class Square1 extends Rectangle{
+    public void identify(){
+        System.out.println("Square is a rectangle");
+    }
+    public void parentIdentify(){
+        super.identify();
+        super.parentIdentify();
+    }
+}
+
+public class question6 {
     public static void main(String[] args){
-        int i, n;
-        double j;
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.print("n: ");
-        n = sc.nextInt();
-        Vector<Square> s = new Vector<Square>();
-        for( i = 0; i < n; i++ ){
-            j = sc.nextDouble();
-            s.add(new Square(j));
-            System.out.println("Square " + (i+1) + ": ");
-            s.elementAt(i).displayStats();
-        }
-
-        
+        Square1 s = new Square1();
+        s.identify();
+        s.parentIdentify();
     }
 }
+
 
 ```
