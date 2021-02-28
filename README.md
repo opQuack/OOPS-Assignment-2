@@ -1,49 +1,51 @@
 ```java
 
-import java.util.*;
-
-class StudentInfo{
-    int id;
-    String name;
-    String dept_name;
-    final String college_name = "NITW";
-    
-    public StudentInfo(int i, String n, String d) {
-        id = i;
-        name = n;
-        dept_name = d;
-    }
-
+class numPair{
+    int a;
+    int b;
     public void display(){
-        System.out.println("\nID: " + id + "\nName: " + name + "\nDept: " + dept_name + "\nCollege: " + college_name);
+        System.out.print(a + " " + b);
     }
 }
 
-public class StudentDatabase {
+public class question12 {
     public static void main(String[] args){
-        HashMap<Integer, Boolean> Register = new HashMap<Integer, Boolean>();
-        Vector<StudentInfo> S = new Vector<StudentInfo>();
-        int t, i, id;
-        String name, dept_name;
-        Scanner sc = new Scanner(System.in);
-        t = Integer.parseInt(sc.nextLine());
-        for( i = 0; i < t; i++ ){
-            id = Integer.parseInt(sc.nextLine());
-            name = sc.nextLine();
-            dept_name = sc.nextLine();
-            try{
-                if( Register.containsKey(id) == true )
-                    throw new Exception("Duplicate Value");
-                StudentInfo s = new StudentInfo(id, name, dept_name);
-                S.addElement(s);
-                Register.put(id, true);
-            }catch(Exception e){System.out.println(e.getMessage());}
+        numPair a = new numPair();
+        String b;
+        int[] d;
+        //1
+        try{
+            a = null;
+            a.display();
         }
-        for( i = 0; i < t; i++ ){
-            S.elementAt(i).display();
+        catch(NullPointerException e){
+            System.out.println(e.getMessage());
         }
-        sc.close();
+        //2
+        try{
+            throw null;
+        }
+        catch(NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+        //3
+        try{
+            b = null;
+            int c = b.length();
+        }
+        catch(NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+        //4
+        try{
+            d = null;
+            System.out.print(d[1]);
+        }
+        catch(NullPointerException e){
+            System.out.println(e.getMessage());
+        }
     }
+
 }
 
 
