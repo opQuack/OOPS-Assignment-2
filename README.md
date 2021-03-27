@@ -1,27 +1,27 @@
 ```java
 
-import java.util.Scanner;
+interface calcAdd{
+    int add(int x, int y);
+}
 
-public class Permutations{
-    public static void main(String args[]){
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        int[] done = new int[str.length()];
-        PermutationsUtil(str, "", done);
-        sc.close();
+interface calcSub{
+    int sub(int x, int y);
+}
+
+class calc implements calcAdd, calcSub{
+    public int add(int x, int y){
+        return x+y;
     }
-    public static void PermutationsUtil(String str, String temp, int[] done){
-        if( temp.length() == str.length()){
-            System.out.println(temp);
-            return;
-        }
-        for( int j = 0; j < str.length(); j++ ){
-            if(done[j] == 0){
-                done[j] = 1;
-                PermutationsUtil(str, temp+str.charAt(j), done);
-                done[j] = 0;
-            }
-        }
+    public int sub(int x, int y){
+        return x-y;
+    }
+}
+
+public class multipleInheritance{
+    public static void main(String args[]){
+        calc A = new calc();
+        System.out.println("1 + 2 = " + A.add(1, 2));
+        System.out.println("1 - 2 = " + A.sub(1, 2));
     }
 }
 
