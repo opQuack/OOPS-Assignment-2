@@ -12,7 +12,7 @@ class bnode{
     }
 }
 
-public class BinaryTree {
+public class LeafNodes {
     public static void main(String args[]){
         bnode root = null;
         Scanner sc = new Scanner(System.in);
@@ -21,9 +21,8 @@ public class BinaryTree {
             root = insertNode(root, i);
             i = sc.nextInt();
         }
-        System.out.println("Inorder Print: ");
-        inOrder(root);
-        System.out.print("\n");
+        int count = countLeaves(root);
+        System.out.println("Leaf Node = " + count);
         sc.close();
     }
     public static bnode insertNode(bnode root, int data){
@@ -40,13 +39,14 @@ public class BinaryTree {
             return cur;
         }
     }
-    public static void inOrder(bnode root){
+    public static int countLeaves(bnode root){
         if(root == null)
-            return;
-        inOrder(root.left);
-        System.out.print(root.data + " ");
-        inOrder(root.right);
-    }   
+            return 0;
+        if(root.left == null && root.right == null)
+            return 1;
+        return countLeaves(root.left) + countLeaves(root.right);
+    } 
 }
+
 
 ```
