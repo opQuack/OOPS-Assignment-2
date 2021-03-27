@@ -1,52 +1,41 @@
 ```java
 
-class numPair{
-    int a;
-    int b;
-    public void display(){
-        System.out.print(a + " " + b);
+import java.util.Scanner;
+
+public class BinarySearch{
+    public static void main(String args[]){
+        int i, n;
+        int[] arr;
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        arr = new int[n];
+        System.out.println("Enter Array: ");
+        for( i = 0; i < n; i++ ){
+            arr[i] = sc.nextInt();
+        }
+        System.out.print("Number to Search For: ");
+        i = sc.nextInt();
+        BinarySearchUtil(arr, n, i);
+     
+        sc.close();
+    }
+    public static void BinarySearchUtil(int[] arr, int n, int key){
+        int lo = 0, hi = n-1, mid;
+        
+        while(lo < hi){
+            mid = lo + (hi-lo)/2;
+            if(arr[mid]<key)
+                lo = mid+1;
+            else
+                hi = mid;
+        }
+        
+        //Trivial Testing
+        if(arr[lo] == key)
+            System.out.println("Found: " + arr[lo]);
+        else
+            System.out.println("Not Found");
     }
 }
-
-public class question12 {
-    public static void main(String[] args){
-        numPair a = new numPair();
-        String b;
-        int[] d;
-        //1
-        try{
-            a = null;
-            a.display();
-        }
-        catch(NullPointerException e){
-            System.out.println(e.getMessage());
-        }
-        //2
-        try{
-            throw null;
-        }
-        catch(NullPointerException e){
-            System.out.println(e.getMessage());
-        }
-        //3
-        try{
-            b = null;
-            int c = b.length();
-        }
-        catch(NullPointerException e){
-            System.out.println(e.getMessage());
-        }
-        //4
-        try{
-            d = null;
-            System.out.print(d[1]);
-        }
-        catch(NullPointerException e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-}
-
 
 ```
