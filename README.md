@@ -1,51 +1,52 @@
 ```java
 
-class ListNode{
+import java.util.Scanner;
+
+class bnode{
     public int data;
-    public ListNode next;
-    ListNode(int data){
+    public bnode left;
+    public bnode right;
+    bnode(int data){
         this.data = data;
+        left = right = null;
     }
 }
 
-public class LoopInLinkedList{
+public class BinaryTree {
     public static void main(String args[]){
-        ListNode A = new ListNode(1);
-        ListNode B = new ListNode(1);
-        ListNode C = new ListNode(1);
-        ListNode D = new ListNode(1);
-        ListNode E = new ListNode(1);
-        ListNode F = new ListNode(1);
-        ListNode G = new ListNode(1);
-        A.next = B; B.next = C; C.next = D; D.next = E; E.next = F; F.next = G; G.next = C;
-        System.out.println("Case 1: ");
-        findLoop(A);
-        System.out.println("Case 2: ");
-        A.next = B; B.next = C; C.next = D; D.next = E; E.next = F; F.next = G; G.next = null;
-        findLoop(A);
-    }
-    public static void findLoop(ListNode head){
-        ListNode slow, fast;
-        slow = fast = head;
-        while(fast.next != null && fast.next.next != null){
-            fast = fast.next.next;
-            slow = slow.next;
-            if(fast == slow){
-                System.out.println("Loop Found");
-                ListNode A = head;
-                findStart(A, slow);
-                return;
-            }
+        bnode root = null;
+        Scanner sc = new Scanner(System.in);
+        int i = sc.nextInt();
+        while( i != -1 ){
+            root = insertNode(root, i);
+            i = sc.nextInt();
         }
-        System.out.println("Loop Not Found");
+        System.out.println("Inorder Print: ");
+        inOrder(root);
+        System.out.print("\n");
+        sc.close();
     }
-    public static void findStart(ListNode head, ListNode meet){
-        while(head != meet){
-            head = head.next;
-            meet = meet.next;
+    public static bnode insertNode(bnode root, int data){
+        if(root == null){
+            bnode temp = new bnode(data);
+            return temp;
         }
-        System.out.println("Loop starts at " + head.data);
+        else{
+            bnode cur = root;
+            if(cur.data > data)
+                cur.left = insertNode(cur.left, data);
+            else
+                cur.right = insertNode(cur.right, data);
+            return cur;
+        }
     }
+    public static void inOrder(bnode root){
+        if(root == null)
+            return;
+        inOrder(root.left);
+        System.out.print(root.data + " ");
+        inOrder(root.right);
+    }   
 }
 
 ```
