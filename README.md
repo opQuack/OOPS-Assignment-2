@@ -1,17 +1,21 @@
 ```sql
 
 DECLARE
-    Y INTEGER;
+    SAL FLOAT;
+    EXP INTEGER;
+    BONUS FLOAT;
+    TOTAL FLOAT;
 BEGIN
-    Y := 1996;
-    
-    if(mod(Y,4) = 0)then
-        if(mod(Y,100) = 0 and mod(Y,400) != 0)then
-            dbms_output.put_line(Y || ': NOT Leap Year');
-        else
-            dbms_output.put_line(Y || ': Leap Year');
-        end if;
+    SAL := 12500;
+    EXP := 12;
+    BONUS := 0.1*SAL;
+    if(EXP > 10)then
+        BONUS := BONUS +  500;
     end if;
+    TOTAL := SAL + BONUS;
+    dbms_output.put_line('SALARY: ' || SAL);
+    dbms_output.put_line('BONUS: ' || BONUS);
+    dbms_output.put_line('TOTAL: ' || TOTAL);
 END;
 /
 
