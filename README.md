@@ -1,19 +1,18 @@
 ```sql
 
 DECLARE
-    num1 INTEGER;
-    num2 INTEGER;
-    sum_val INTEGER;
-    average FLOAT;
+    Y INTEGER;
 BEGIN
-    num1 := 2;
-    num2 := 3;
-    sum_val := num1 + num2;
-    average := sum_val/2;
-    dbms_output.put_line('Num 1: ' || num1);
-    dbms_output.put_line('Num 2: ' || num2);
-    dbms_output.put_line('Total: ' || sum_val);
-    dbms_output.put_line('Average: ' || average);
+    Y := 1996;
+    
+    if(mod(Y,4) = 0)then
+        if(mod(Y,100) = 0 and mod(Y,400) != 0)then
+            dbms_output.put_line(Y || ': NOT Leap Year');
+        else
+            dbms_output.put_line(Y || ': Leap Year');
+        end if;
+    end if;
 END;
 /
+
 ```
