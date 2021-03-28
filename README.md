@@ -1,29 +1,25 @@
 ```sql
 
 DECLARE
-    SAL FLOAT;
-    HRA FLOAT;
-    DA FLOAT;
+    PRINCIPAL FLOAT;
+    TI INTEGER;
+    RATE FLOAT;
+    SI FLOAT;
     TOTAL FLOAT;
 BEGIN
-    SAL := 12500;
-    if(SAL > 15000)then
-        HRA := 0.12*SAL;
-        DA := 0.08*SAL;
-    elsif(SAL > 12000)then
-        HRA := 0.10*SAL;
-        DA := 0.06*SAL;
-    elsif(SAL > 9000)then
-        HRA := 0.07*SAL;
-        DA := 0.04*SAL;
+    PRINCIPAL := 5600;
+    TI := 12;
+    if(TI > 10)then
+        RATE := 0.08;
     else
-        HRA := 0.05*SAL;
-        DA := 500;
+        RATE := 0.06;
     end if;
-    TOTAL := SAL + HRA + DA;
-    dbms_output.put_line('SALARY: ' || SAL);
-    dbms_output.put_line('HRA: ' || HRA);
-    dbms_output.put_line('DA: ' || DA);
+    SI := PRINCIPAL*RATE*TI;
+    TOTAL := PRINCIPAL + SI;
+    dbms_output.put_line('P: ' || PRINCIPAL);
+    dbms_output.put_line('T: ' || TI);
+    dbms_output.put_line('R: ' || RATE*100 || '%');
+    dbms_output.put_line('SI: ' || SI);
     dbms_output.put_line('TOTAL: ' || TOTAL);
 END;
 /
