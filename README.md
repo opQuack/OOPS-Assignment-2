@@ -1,33 +1,27 @@
 ```sql
 
 DECLARE
-    empNo employee.ID%type;
-    SALARY employee.SALARY%TYPE;
-    maxSALARY employee.SALARY%TYPE;
-    minSALARY employee.SALARY%TYPE;
-    empName employee.NAME%TYPE;
+    empno INTEGER;
+    SALARY employee.salary%type;
 BEGIN
-    Select min(Salary), max(Salary) INTO minSALARY, maxSALARY 
-    from employee;
+    empno := 2;
     
-    Select ID, Name INTO empNo, empName
-    from employee
-    where Salary = minSALARY;
+    SELECT Salary INTO SALARY
+    from Employee 
+    where ID = empno;
     
-    dbms_output.put_line('MINIMUM SALARY');
-    dbms_output.put_line('ID: ' || empNo);
-    dbms_output.put_line('Name: ' || empName);
-    
-    Select ID, Name INTO empNo, empName
-    from employee
-    where Salary = maxSALARY;
-    
-    dbms_output.put_line('MAXIMUM SALARY');
-    dbms_output.put_line('ID: ' || empNo);
-    dbms_output.put_line('Name: ' || empName);
+    if(SALARY < 5000)then
+        Update Employee
+        SET Salary = Salary + 0.1*Salary
+        where ID = empno;
+    else
+        DELETE from Employee
+        where ID = empno;
+    end if;
 END;
 /
-    
+
+Select * from Employee;
     
 
 ```
