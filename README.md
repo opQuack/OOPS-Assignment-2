@@ -1,19 +1,33 @@
 ```sql
 
 DECLARE
-    empNo INTEGER;
+    empNo employee.ID%type;
     SALARY employee.SALARY%TYPE;
+    maxSALARY employee.SALARY%TYPE;
+    minSALARY employee.SALARY%TYPE;
     empName employee.NAME%TYPE;
 BEGIN
-    empNo := &empNo;
-    Select Salary, Name INTO SALARY, empName 
+    Select min(Salary), max(Salary) INTO minSALARY, maxSALARY 
+    from employee;
+    
+    Select ID, Name INTO empNo, empName
     from employee
-    where ID = empNo;
+    where Salary = minSALARY;
+    
+    dbms_output.put_line('MINIMUM SALARY');
     dbms_output.put_line('ID: ' || empNo);
     dbms_output.put_line('Name: ' || empName);
-    dbms_output.put_line('Salary: ' || empNo);
+    
+    Select ID, Name INTO empNo, empName
+    from employee
+    where Salary = maxSALARY;
+    
+    dbms_output.put_line('MAXIMUM SALARY');
+    dbms_output.put_line('ID: ' || empNo);
+    dbms_output.put_line('Name: ' || empName);
 END;
 /
+    
     
 
 ```
