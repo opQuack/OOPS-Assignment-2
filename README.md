@@ -1,30 +1,21 @@
 ```sql
 
 DECLARE
-    COUNTER INTEGER;
-    SAL employee.Salary%type;
-    EmpName employee.Name%type;
+    NUM1 INTEGER;
+    NUM2 INTEGER;
+    INVALID_GREATNESS EXCEPTION;
 BEGIN
-    SAL := &SAL;
-    Select count(*) INTO COUNTER
-    from Employee
-    where Salary = SAL;
-    
-    if(COUNTER > 3)then
-        RAISE TOO_MANY_ROWS;
+    NUM1 := 20;
+    NUM2 := 5;
+    if(NUM2 > NUM1)then
+        RAISE INVALID_GREATNESS;
     end if;
-    
-    Select Name INTO EmpName
-    from Employee
-    where Salary = SAL;
-    
-    dbms_output.put_line('Name: ' || EmpName);
-    
+    dbms_output.put_line('ANS: ' || NUM1/NUM2);
 EXCEPTION
-    WHEN TOO_MANY_ROWS then
-        dbms_output.put_line('TOO MANY ROWS');
-    WHEN NO_DATA_FOUND then
-        dbms_output.put_line('NO DATA FOUND');
+    WHEN INVALID_GREATNESS then
+        dbms_output.put_line('NUM2 > NUM1');
+    WHEN ZERO_DIVIDE then
+        dbms_output.put_line('Divide by Zero');
 END;
 /
 
