@@ -1,22 +1,20 @@
 ```sql
 
-DECLARE
-    NUM1 INTEGER;
-    NUM2 INTEGER;
-    INVALID_GREATNESS EXCEPTION;
-BEGIN
-    NUM1 := 20;
-    NUM2 := 5;
-    if(NUM2 > NUM1)then
-        RAISE INVALID_GREATNESS;
-    end if;
-    dbms_output.put_line('ANS: ' || NUM1/NUM2);
-EXCEPTION
-    WHEN INVALID_GREATNESS then
-        dbms_output.put_line('NUM2 > NUM1');
-    WHEN ZERO_DIVIDE then
-        dbms_output.put_line('Divide by Zero');
-END;
-/
+CREATE TABLE employee(
+    ID INT,
+    NAME VARCHAR (20) NOT NULL,
+    AGE INT NOT NULL,
+    DEPT VARCHAR(25),
+    ADDRESS CHAR (25),
+    SALARY DECIMAL (18, 2),
+    PRIMARY KEY (ID)
+);
+
+INSERT INTO employee VALUES (1, 'Anshuman', 32, 'Accounts', 'Kanpur', 2000.00 );
+INSERT INTO employee VALUES (2, 'Priyanshu', 25, 'HR', 'Delhi', 1500.00 );
+INSERT INTO employee VALUES (3, 'Satvik', 23, 'Engineering', 'Hyderabad', 2000.00 );
+INSERT INTO employee VALUES (4, 'Pankaj', 25, 'Accounts', 'Rajasthan', 6500.00 );
+INSERT INTO employee VALUES (5, 'Rohit', 27, 'HR', 'Vizag', 8500.00 );
+INSERT INTO employee VALUES (6, 'Shikhar', 22, 'Engineering', 'Allahabad', 4500.00 );
 
 ```
